@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Users</title>
+    <title>Students</title>
 </head>
 
 <body class="d-flex justify-content-center align-items-start vh-100 pt-5">
@@ -12,7 +12,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-auto">
-                <h1 class="text-center mb-4" style="color: darkcyan"><u>Users Details</u></h1>
+                <h1 class="text-center mb-4" style="color: darkcyan"><u>Students Details</u></h1>
                 <table class="table table-bordered table-striped text-center">
 
                     {{-- Table Header --}}
@@ -43,17 +43,23 @@
                                     </td>
                                 @endforeach
 
+
+
+
+
+
+
                                 {{-- Actions --}}
                                 <td>
                                     @foreach($actions as $action)
 
                                         @if($action['method'] === 'GET')
-                                            <a href="{{ route($action['route'], $row->id) }}"
+                                            <a href="{{ route($action['route'], $row->uuid) }}"
                                             class="{{ $action['class'] }}">
                                                 {{ $action['label'] }}
                                             </a>
                                         @else
-                                            <form action="{{ route($action['route'], $row->id) }}"
+                                            <form action="{{ route($action['route'], $row->uuid) }}"
                                                 method="POST"
                                                 style="display:inline-block">
                                                 @csrf
@@ -67,6 +73,17 @@
 
                                     @endforeach
                                 </td>
+
+
+
+
+
+
+
+
+
+
+                                
                             </tr>
                         @endforeach
                     </tbody>
