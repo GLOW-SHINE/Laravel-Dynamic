@@ -45,6 +45,12 @@ class StudentController extends Controller
             ],
         ];
 
+        $addButton = [
+            'label' => '+ Add Student',
+            'route' => 'students.create',
+            'class' => 'btn btn-primary'
+        ];
+
         $selectedKeys = array_keys((array) $students->first());
 
         $columns = array_intersect_key($allColumns, array_flip($selectedKeys));                      
@@ -53,7 +59,55 @@ class StudentController extends Controller
             'data'    => $students,
             'column'  => $columns,
             'actions' => $actions,
+            'addButton' => $addButton,
         ]); 
+    }
+
+    public function createStudent()
+    {
+
+        $student_Fields = [
+            [
+                'label' => 'Roll No',
+                'name' => 'roll',
+                'type' => 'text',
+                'placeholder' => 'Roll No',
+                'required' => true
+            ],
+            [
+                'label' => 'Name',
+                'name' => 'name',
+                'type' => 'text',
+                'palceholder' => 'Name',
+                'required' => true
+            ],
+            [
+                'label' => 'Email Address',
+                'name' => 'email',
+                'type' => 'email',
+                'palceholder' => '@mail',
+                'required' => true
+            ],
+            [
+                'label' => 'Phone No',
+                'name' => 'phone',
+                'type' => 'text',
+                'placeholder' => 'Phone No',
+                'reqired' => true
+            ],
+            [
+                'label' => 'Agree To Terms',
+                'name' => 'terms',
+                'type' => 'checkbox',
+                'required' => true
+            ],
+        ];
+
+
+
+        return view('students_add', compact('student_Fields'));
+
+
     }
 
     public function edit($uuid)

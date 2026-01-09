@@ -14,6 +14,15 @@
             <div class="col-auto">
                 <h1 class="text-center mb-4" style="color: darkcyan"><u>Students Details</u></h1>
                 <table class="table table-bordered table-striped text-center">
+                    @if(isset($addButton))
+                        <div class="d-flex justify-content-end mb-3">
+                            <a href="{{ route($addButton['route']) }}"
+                            class="{{ $addButton['class'] }}">
+                                {{ $addButton['label'] }}
+                            </a>
+                        </div>
+                    @endif
+                    
 
                     {{-- Table Header --}}
                     <thead>
